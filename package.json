@@ -11,12 +11,13 @@
   },
   "scripts": {
     "copy-icon": "cp ./misc/logo/jasper-dev.icns ./node_modules/electron/dist/Electron.app/Contents/Resources/electron.icns",
-    "electron": "npm run copy-icon && ./node_modules/.bin/electron -r babel-register ./",
+    "electron": "npm run copy-icon && npm run sqlite3-rebuild && ./node_modules/.bin/electron -r babel-register ./",
     "build": "./script/mac/build.sh",
-    "electron-win": "./node_modules/.bin/electron -r babel-register ./",
+    "electron-win": "npm run sqlite3-rebuild && ./node_modules/.bin/electron -r babel-register ./",
     "build-win": "./script/win/build.sh",
-    "electron-linux": "./node_modules/.bin/electron -r babel-register ./",
-    "build-linux": "./script/linux/build.sh"
+    "electron-linux": "npm run sqlite3-rebuild && ./node_modules/.bin/electron -r babel-register ./",
+    "build-linux": "./script/linux/build.sh",
+    "sqlite3-rebuild": "./node_modules/.bin/electron-rebuild -w sqlite3 -p"
   },
   "dependencies": {
     "color-logger": "0.0.6",
@@ -39,6 +40,7 @@
     "babel-register": "6.26.0",
     "electron": "2.0.8",
     "electron-packager": "12.1.1",
+    "electron-rebuild": "^1.8.2",
     "esdoc": "latest",
     "esdoc-jsx-plugin": "latest",
     "esdoc-standard-plugin": "latest"

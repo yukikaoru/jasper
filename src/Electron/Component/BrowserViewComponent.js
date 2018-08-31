@@ -741,6 +741,26 @@ export default class WebViewComponent extends React.Component {
     }
   }
 
+  _handleIssueScrollToTop() {
+    if (!this._webView) return;
+    this._webView.executeJavaScript('window.scrollTo({top: 0})')
+  }
+
+  _handleIssueScrollToBottom() {
+    if (!this._webView) return;
+    this._webView.executeJavaScript('window.scrollTo({top: document.scrollingElement.scrollHeight})')
+  }
+
+  _handleIssuePage(direction) {
+    if(!this._webView) return;
+
+    if (direction > 0) {
+      this._webView.executeJavaScript('window.scrollBy(0, 400)');
+    } else {
+      this._webView.executeJavaScript('window.scrollBy(0, -400)');
+    }
+  }
+
   _handleSearchBoxNav(command) {
     switch (command) {
       case 'back':
@@ -846,6 +866,18 @@ export default class WebViewComponent extends React.Component {
         break;
       case 'scroll_up':
         this._handleIssueScroll(-1);
+        break;
+      case 'scroll_top':
+        this._handleIssueScrollToTop();
+        break;
+      case 'scroll_bottom':
+        this._handleIssueScrollToBottom();
+        break;
+      case 'page_down':
+        this._handleIssuePage(1);
+        break;
+      case 'page_up':
+        this._handleIssuePage(-1);
         break;
       case 'read':
         this._handleIssueAction('read');

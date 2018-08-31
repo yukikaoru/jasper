@@ -4,3 +4,6 @@
 /misc/logo/jasper.icns
 /misc/data
 /.idea
+/.idea_modules
+*.iml
+.python-version

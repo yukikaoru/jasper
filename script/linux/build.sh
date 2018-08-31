@@ -8,7 +8,7 @@ rm -rf ./out/build
 
 # electron requires electron-vX.Y-linux-x64 of sqlite3
 npm run sqlite3-rebuild
-cp -a ./node_modules/sqlite3/lib/binding/electron-v1.8-linux-x64 ./out/js/node_modules/sqlite3/lib/binding/
+cp -a ./node_modules/sqlite3/lib/binding/electron-v2.0-linux-x64 ./out/js/node_modules/sqlite3/lib/binding/
 
 # build app with electron-packager
 VERSION=$(grep version package.json | head -n 1 | cut -f 2 -d : | \sed 's/[",]//g')

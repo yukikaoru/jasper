@@ -184,8 +184,8 @@ electron.app.on('ready', function() {
       submenu: [
         { label: 'Load Issues', accelerator: '.', click: commandWebContents.bind(null, 'issues', 'load') },
         { type: 'separator' },
-        { label: 'Next Issue', accelerator: 'J', click: commandWebContents.bind(null, 'issues', 'next') },
-        { label: 'Prev Issue', accelerator: 'K', click: commandWebContents.bind(null, 'issues', 'prev') },
+        { label: 'Next Issue', accelerator: 'CmdOrCtrl+J', click: commandWebContents.bind(null, 'issues', 'next') },
+        { label: 'Prev Issue', accelerator: 'CmdOrCtrl+K', click: commandWebContents.bind(null, 'issues', 'prev') },
         { label: 'Skip Read(On/Off)', accelerator: 'Y', type: 'checkbox', click: ()=>{ skipReadIssue ^= 1 } },
         { type: 'separator' },
         { label: 'Toggle', submenu: [
@@ -211,11 +211,15 @@ electron.app.on('ready', function() {
       label: 'Page',
       submenu: [
         { label: 'Reload', accelerator: 'CmdOrCtrl+R', click: commandWebContents.bind(null, 'webview', 'reload') },
-        { label: 'Back', accelerator: 'CmdOrCtrl+[', click: commandWebContents.bind(null, 'webview', 'back') },
-        { label: 'Forward', accelerator: 'CmdOrCtrl+]', click: commandWebContents.bind(null, 'webview', 'forward') },
+        { label: 'Back', accelerator: 'Shift+H', click: commandWebContents.bind(null, 'webview', 'back') },
+        { label: 'Forward', accelerator: 'Shift+L', click: commandWebContents.bind(null, 'webview', 'forward') },
         { type: 'separator' },
-        { label: 'Scroll Down', accelerator: 'CmdOrCtrl+J', click: commandWebContents.bind(null, 'webview', 'scroll_down') },
-        { label: 'Scroll Up', accelerator: 'CmdOrCtrl+K', click: commandWebContents.bind(null, 'webview', 'scroll_up') },
+        { label: 'Scroll Down', accelerator: 'J', click: commandWebContents.bind(null, 'webview', 'scroll_down') },
+        { label: 'Scroll Up', accelerator: 'K', click: commandWebContents.bind(null, 'webview', 'scroll_up') },
+        { label: 'Scroll To Top', accelerator: 'G', click: commandWebContents.bind(null, 'webview', 'scroll_top') },
+        { label: 'Scroll To Bottom', accelerator: 'Shift+G', click: commandWebContents.bind(null, 'webview', 'scroll_bottom') },
+        { label: 'Page Down', accelerator: 'CmdOrCtrl+F', click: commandWebContents.bind(null, 'webview', 'page_down') },
+        { label: 'Page Up', accelerator: 'CmdOrCtrl+B', click: commandWebContents.bind(null, 'webview', 'page_up') },
         { type: 'separator' },
         { label: 'Open Location', accelerator: 'CmdOrCtrl+L', click: commandWebContents.bind(null, 'webview', 'open_location') }
       ]
